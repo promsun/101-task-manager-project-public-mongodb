@@ -3,12 +3,12 @@ const cors = require("cors");
 const morgan = require("morgan");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger.config");
-const { corsOrigin, nodeEnv } = require("./config/app.config");
+const { corsOrigin, nodeEnv, app: appConfig } = require("./config/app.config");
 const taskRoutes = require("./routes/task.routes");
 
 // CDN CSS for Swagger UI
 const CSS_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css";
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.2/swagger-ui.min.css";
 
 const app = express();
 
@@ -34,8 +34,9 @@ app.use(
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "Task Manager API",
-    version: "1.0.0",
+    message: appConfig.name,
+    version: appConfig.version,
+    description: appConfig.description,
     status: "running",
     timestamp: new Date().toISOString(),
     environment: nodeEnv,

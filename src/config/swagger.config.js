@@ -1,13 +1,12 @@
 const swaggerJSDoc = require("swagger-jsdoc");
-const { nodeEnv, serverUrl } = require("./app.config");
+const { nodeEnv, serverUrl, app } = require("./app.config");
 
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "Task Manager API",
-    version: "1.0.0",
-    description:
-      "A simple Task Manager API built with Express and MongoDB to manage tasks",
+    title: app.name,
+    version: app.version,
+    description: app.description,
   },
   servers: [
     {
