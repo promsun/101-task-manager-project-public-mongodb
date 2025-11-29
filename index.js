@@ -1,20 +1,7 @@
 require("dotenv").config();
-const mongoose = require("mongoose");
 const app = require("./src/app");
 const { nodeEnv, port, serverUrl } = require("./src/config/app.config");
-const { mongodbUri } = require("./src/config/db.config");
-
-// Connect to MongoDB
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(mongodbUri);
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-    console.log(`✅ Database: ${conn.connection.name}`);
-  } catch (error) {
-    console.error(`❌ MongoDB Connection Error: ${error.message}`);
-    process.exit(1);
-  }
-};
+const { connectDB } = require("./src/services/database.service");
 
 // Start Server
 const startServer = async () => {
