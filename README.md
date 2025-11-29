@@ -2,7 +2,7 @@
 
 This is a simple Task Manager RESTful API built with Node.js, Express.js, and MongoDB. It allows users to create, read, update, and delete tasks. The API is documented using Swagger for easy exploration and testing.
 
-[🖥️ Live Demo (Vercel)](https://task-manager-101-mongodb.vercel.app/api-docs)
+[🖥️ Live Demo (Render)](https://one01-task-manager-project-public-mongodb.onrender.com/api-docs/)
 
 ## Technologies Used ✨
 
