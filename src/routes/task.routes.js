@@ -11,6 +11,13 @@ const router = express.Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Tasks
+ *   description: Task management endpoints
+ */
+
+/**
+ * @swagger
  * components:
  *   schemas:
  *     Task:
@@ -65,7 +72,7 @@ const router = express.Router();
  *                   type: boolean
  *                 count:
  *                   type: number
- *                 tasks:
+ *                 data:
  *                   type: array
  *                   items:
  *                     $ref: '#/components/schemas/Task'
@@ -97,7 +104,7 @@ router.get("/tasks", getAllTasks);
  *               properties:
  *                 success:
  *                   type: boolean
- *                 task:
+ *                 data:
  *                   $ref: '#/components/schemas/Task'
  *       400:
  *         description: Invalid task ID
@@ -142,7 +149,7 @@ router.get("/tasks/:id", getTaskById);
  *                   type: boolean
  *                 message:
  *                   type: string
- *                 task:
+ *                 data:
  *                   $ref: '#/components/schemas/Task'
  *       400:
  *         description: Invalid input
@@ -192,7 +199,7 @@ router.post("/tasks", createTask);
  *                   type: boolean
  *                 message:
  *                   type: string
- *                 task:
+ *                 data:
  *                   $ref: '#/components/schemas/Task'
  *       400:
  *         description: Invalid input (validation error or invalid task ID)

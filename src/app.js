@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("./config/swagger.config");
-const { corsOrigin, nodeEnv, app: appConfig } = require("./config/app.config");
+const { swaggerSpec } = require("./config/swagger.config");
+const { corsOrigin, nodeEnv, appInfo } = require("./config/app.config");
 const taskRoutes = require("./routes/task.routes");
 
 const app = express();
@@ -21,9 +21,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: appConfig.name,
-    version: appConfig.version,
-    description: appConfig.description,
+    name: appInfo.name,
+    version: appInfo.version,
+    description: appInfo.description,
     status: "running",
     timestamp: new Date().toISOString(),
     environment: nodeEnv,

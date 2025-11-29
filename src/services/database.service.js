@@ -3,13 +3,18 @@ const { mongodbUri } = require("../config/db.config");
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(mongodbUri);
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-    console.log(`✅ Database: ${conn.connection.name}`);
+    await mongoose.connect(mongodbUri);
+    console.log("✅ MongoDB connected successfully");
+    return true;
   } catch (error) {
-    console.error(`❌ MongoDB Connection Error: ${error.message}`);
-    process.exit(1);
+    console.error("❌ MongoDB connection failed:", error.message);
+    return false;
   }
 };
 
-module.exports = { connectDB };
+const disconnectDB = async () => {
+  await mongoose.connection.close();
+  console.log("✅ MongoDB Disconnected");
+};
+
+module.exports = { connectDB, disconnectDB };

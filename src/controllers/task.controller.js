@@ -7,7 +7,7 @@ const getAllTasks = async (req, res) => {
     res.status(200).json({
       success: true,
       count: tasks.length,
-      tasks,
+      data: tasks,
     });
   } catch (error) {
     res.status(500).json({
@@ -33,7 +33,7 @@ const getTaskById = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      task,
+      data: task,
     });
   } catch (error) {
     if (error.name === "CastError") {
@@ -60,7 +60,7 @@ const createTask = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Task created successfully",
-      task,
+      data: task,
     });
   } catch (error) {
     if (error.name === "ValidationError") {
@@ -105,7 +105,7 @@ const updateTask = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Task updated successfully",
-      task,
+      data: task,
     });
   } catch (error) {
     if (error.name === "CastError") {
